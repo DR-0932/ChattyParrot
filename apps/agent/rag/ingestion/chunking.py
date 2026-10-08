@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from ..ingestion import Document
+from ..models import Document
 
 
 @dataclass
