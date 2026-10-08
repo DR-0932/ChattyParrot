@@ -7,7 +7,7 @@ from pathlib import Path
 from pypdf import PdfReader
 from pypdf.errors import PdfReadError
 
-from ..ingestion import Document
+from ..models import Document
 
 logger = logging.getLogger(__name__)
 
