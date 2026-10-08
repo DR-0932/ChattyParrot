@@ -1,0 +1,10 @@
+Python is a high-level programming language known for its readable syntax.
+It is widely used in web development, data science, and automation.
+
+FastAPI is a modern web framework for building APIs with Python.
+It uses type hints to validate requests and generate documentation automatically.
+
+Retrieval-augmented generation, or RAG, combines a search step with a language model.
+Documents are split into chunks, embedded as vectors, and searched by similarity.
+The best matching chunks are then given to the model as context for its answer.
+EOF
