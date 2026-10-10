@@ -2,7 +2,15 @@ import os
 import uuid
 
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance , PointStruct,VectorParams
+from qdrant_client.models import (
+    Distance,
+    FieldCondition,
+    Filter,
+    FilterSelector,
+    MatchValue,
+    PointStruct,
+    VectorParams,
+)
 
 class VectorStore:
     def __init__(self, collection:str = "docs",dim:int = 384):
@@ -41,5 +49,17 @@ class VectorStore:
             limit = top_k
         )
         return [(p.payload or {}, p.score) for p in result.points]
+
+
+    def delete_source(self, source: str) -> None:
+        self.client.delete(
+            collection_name=self.collection,
+            points_selector=FilterSelector(
+                filter=Filter(
+                    must=[FieldCondition(key="source", match=MatchValue(value=source))]
+                )
+            ),
+        )
+
 
             
