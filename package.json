@@ -16,5 +16,8 @@
       "onFail": "download"
     }
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "lucide-react": "^1.55.0"
+  }
 }
