@@ -40,7 +40,10 @@ class VectorStore:
             )
                 for c, emb in zip(chunks,embeddings)
         ]
-        self.client.upsert(collection_name=self.collection,points =points)
+        self.client.upsert(
+            collection_name=self.collection,
+            points =points
+            )
 
     def search(self, query_embedding, top_k:int =3 ):
         result = self.client.query_points(
