@@ -1,5 +1,5 @@
 import type {Request,Response} from 'express';
-import { Readable } from "node:stream";
+import  { Readable } from "node:stream";
 import type { ReadableStream as NodeWebStream } from "node:stream/web";
 import multer from 'multer';
 
@@ -23,7 +23,7 @@ export async function upload_file(req:Request,res:Response):Promise<void>{
 
         form.append("file",
             new Blob([new Uint8Array(req.file.buffer)],{
-                type: req.file.mimetype,
+                type: req.file.mimetype
             }),
             req.file.originalname
         );
