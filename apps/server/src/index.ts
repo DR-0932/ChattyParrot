@@ -14,7 +14,7 @@ app.get("/api/health", (_req, res) => {
   res.json({ status: "ok" });
 });
  
-app.use("/agent",agentRouter)
+app.use("/api",agentRouter)
 
 
 app.listen(PORT, () => {
