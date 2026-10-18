@@ -12,13 +12,13 @@ export default function UploadDocuments(){
     const [fileNames,setFileNames]  = useState<string[]>([]);
 
     async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        const files = Array.from(e.target.files ?? []);
-        if(files.length === 0) return;
+        const file = Array.from(e.target.files ?? []);
+        if(file.length === 0) return;
 
         setStatus("uploading");
         try{
-            await ingestFiles(files);
-            setFileNames((prev)=>[...prev, ...files.map((f)=>f.name)])
+            await ingestFiles(file);
+            setFileNames((prev)=>[...prev, ...file.map((f)=>f.name)])
             setStatus("done");
         }catch{
             setStatus("error");
@@ -34,7 +34,7 @@ export default function UploadDocuments(){
                 ref = {inputRef}
                 type= "file"
                 multiple
-                accept = ".pdf,.txt,.md,.docx"
+                accept=".pdf,.txt,.md,.docx,.png,.jpg,.jpeg,.webp,.bmp"
                 onChange = {handleChange}
                 className = "hidden"
             />
