@@ -3,6 +3,8 @@ services:
     build: ./apps/agent
     ports:
       - "8000:8000"
+    volumes:
+      - hf_cache:/root/.cache/huggingface
 
   server:
     build: ./apps/server
@@ -22,3 +24,5 @@ services:
       - "3001:3000"
     depends_on:
       - server
+volumes:
+  hf_cache:
