@@ -1,0 +1,24 @@
+services:
+  agent:
+    build: ./apps/agent
+    ports:
+      - "8000:8000"
+
+  server:
+    build: ./apps/server
+    environment:
+      AGENT_URL: http://agent:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - agent
+
+  frontend:
+    build:
+      context: ./apps/web/frontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:3000
+    ports:
+      - "3001:3000"
+    depends_on:
+      - server

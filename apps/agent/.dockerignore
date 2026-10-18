@@ -1,0 +1,19 @@
+# Cache and runtime files
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Testing files
+test/
+tests/
+
+# Git and IDE metadata (Good practice to include)
+.git/
+.gitignore
+.vscode/
+.idea/
+.DS_Store
+
+# Virtual environments (In case 'uv' generates one locally later)
+.venv/
+venv/
