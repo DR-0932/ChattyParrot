@@ -1,5 +1,10 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3001";
 
+export type HistoryMessage ={
+    role: "user" | "assistant";
+    content:string;
+
+}
 
 export async function ingestFiles(files: File[]) {
   return Promise.all(
@@ -17,11 +22,11 @@ export async function ingestFiles(files: File[]) {
 }
 
 
-export async function sendChatMessage(message:string){
+export async function sendChatMessage(message:string, history: HistoryMessage[] = []){
     const response = await fetch(`${API_BASE_URL}/api/chat`,{
         method:"POST",
         headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({message}),
+        body:JSON.stringify({message,history}),
     })
 
     if(!response.ok){
