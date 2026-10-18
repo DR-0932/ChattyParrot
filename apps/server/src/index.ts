@@ -5,7 +5,7 @@ import agentRouter from "./routes/agentRoutes.js";
 
 
 const app = express();
-const PORT = Number(process.env.PORT ?? 3001);
+const PORT = Number(process.env.PORT ?? 3000);
 
 app.use(cors());
 app.use(express.json());
