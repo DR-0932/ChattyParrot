@@ -86,8 +86,8 @@ const Home = () => {
 
   return (
     <main className="mx-auto w-full max-w-3xl space-y-4 px-4 py-8">
-      <UploadDocuments />
       <ChatWindow messages={messages} loading={loading} />
+      <UploadDocuments />
       <ChatInput onSend={handleSend} />
     </main>
   );
