@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 
 export type Source = {
   source: string;
@@ -49,9 +50,19 @@ export default function ChatWindow({messages , loading = false}:ChatWindowProps)
                 : "bg-gray-100 text-gray-900"
             }`}
           >
+          <ReactMarkdown
+            components={{
+              mark: ({ children }) => (
+                <mark className="rounded bg-yellow-200 px-1 text-gray-900">
+                  {children}
+                </mark>
+              ),
+            }}
+          >
             {m.content || (loading ? "…" : "")}
-          </div>
-
+          </ReactMarkdown> 
+         
+         </div>
           {m.sources && m.sources.length > 0 && (
             <details className="mt-1 max-w-[85%] text-sm text-gray-600">
               <summary className="cursor-pointer">
