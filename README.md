@@ -29,7 +29,7 @@ cp .env.example .env
 # open .env and add your DeepSeek API key
 
 ```bash
-  docker compose up --build
+  docker compose up --build![alt text](image.png)
 ```
 
 Open the frontend at [http://localhost:3001](http://localhost:3001). The API gateway is exposed on port `3000`, and the agent service on port `8000`.
