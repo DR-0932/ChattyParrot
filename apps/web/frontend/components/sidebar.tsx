@@ -57,11 +57,11 @@ export default function Sidebar({
         <nav className="mt-2 space-y-1">
           {[
             { label: "Search chats", icon: Search },
-            { label: "Images", icon: Images },
-            { label: "History", icon: Clock },
-            { label: "Knowledge library", icon: Library },
-            { label: "Integrations", icon: Puzzle },
-            { label: "Explore", icon: Compass },
+            // { label: "Images", icon: Images },
+            // { label: "History", icon: Clock },
+            // { label: "Knowledge library", icon: Library },
+            // { label: "Integrations", icon: Puzzle },
+            // { label: "Explore", icon: Compass },
           ].map(({ label, icon: Icon }) => (
             <button
               type="button"

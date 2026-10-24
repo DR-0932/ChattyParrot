@@ -159,7 +159,7 @@ async function handleSend(message: string) {
 
   return (
     <main className="flex h-dvh overflow-hidden bg-black text-white">
-      <Sidebar onNewChat={() => setMessages([])} />
+      {/* <Sidebar onNewChat={() => setMessages([])} /> */}
 
       <section className="flex min-w-0 flex-1 flex-col">
         <header className="flex h-14 shrink-0 items-center justify-center border-b border-neutral-900">
