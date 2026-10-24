@@ -79,3 +79,44 @@ export async function chat(req:Request, res:Response) {
   }
 };
 
+export function callAgent( body:{message:string; history:unknown[]; top_k?:number}, signal:AbortSignal){
+  return fetch(`${AGENT_URL}/chat`,{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify(body),
+    signal
+  });
+}
+
+export async function streamToClient(  body: ReadableStream<Uint8Array>,res: Response ){
+  const reader = body.getReader();
+  const decoder = new TextDecoder();
+  let fullText  = "";
+  let leftOver = "";
+  let hadError = false;
+  
+  while(true){
+    const { done,value } = await reader.read();
+    if(done) break;
+
+    const chunk = decoder.decode(value,{stream:true});
+    res.write(chunk);
+
+    leftOver += chunk;
+    const lines = leftOver.split("\n")
+    leftOver = lines.pop() ?? "";
+
+    for (const line of lines){
+      if(!line.startsWith("data:")) continue;
+
+      try{
+        const parsed = JSON.parse(line.slice(5).trim());
+        if( parsed.type === "token") fullText += parsed.text;
+        if( parsed.type === "error") hadError = true;
+      } catch{
+
+      }
+    }
+  }
+  return {fullText, hadError};
+}
